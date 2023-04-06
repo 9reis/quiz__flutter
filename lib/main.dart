@@ -9,7 +9,7 @@ class PerguntaApp extends StatefulWidget {
 
 // Classe que gerencia o estado do comp (PerguntaApp)
 class _PerguntaAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
+  var _perguntaSelecionada = 0;
 
   // A arvore de comp depende do estado para ser renderizada
   Widget build(BuildContext context) {
@@ -28,18 +28,18 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             // Pega a primeira pergunta / perguntas[0]
-            Text(perguntas[perguntaSelecionada]),
+            Text(perguntas[_perguntaSelecionada]),
             ElevatedButton(
               child: Text('Resposta 1'),
-              onPressed: responder,
+              onPressed: _responder,
             ),
             ElevatedButton(
               child: Text('Resposta 2'),
-              onPressed: responder,
+              onPressed: _responder,
             ),
             ElevatedButton(
               child: Text('Resposta 3'),
-              onPressed: responder,
+              onPressed: _responder,
             ),
           ],
         ),
@@ -47,9 +47,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
     );
   }
 
-  void responder() {
+  void _responder() {
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     });
     print('Resposta 1 sendo selecionada');
   }

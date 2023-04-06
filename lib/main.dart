@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 
 main() => runApp(PerguntaApp());
 
-class PerguntaApp extends StatelessWidget {
-  var perguntaSelecionada = 1;
+class PerguntaApp extends StatefulWidget {
+  @override
+  State<PerguntaApp> createState() => _PerguntaAppState();
+}
 
+// Classe que gerencia o estado do comp (PerguntaApp)
+class _PerguntaAppState extends State<PerguntaApp> {
+  var perguntaSelecionada = 0;
+
+  // A arvore de comp depende do estado para ser renderizada
   Widget build(BuildContext context) {
     final perguntas = [
       'Qual é a sua cor favorita ?',
@@ -41,7 +48,9 @@ class PerguntaApp extends StatelessWidget {
   }
 
   void responder() {
-    perguntaSelecionada++;
+    setState(() {
+      perguntaSelecionada++;
+    });
     print('Resposta 1 sendo selecionada');
   }
 }

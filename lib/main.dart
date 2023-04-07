@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz__flutter/questao.dart';
-import 'package:quiz__flutter/resposta.dart';
+
+import 'package:quiz__flutter/questionario.dart';
+
 import 'package:quiz__flutter/resultado.dart';
 
 main() => runApp(PerguntaApp());
@@ -30,10 +31,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
   // A arvore de comp depende do estado para ser renderizada
   Widget build(BuildContext context) {
-    List<String> respostas = temPerguntaSelecionada
-        ? _perguntas[_perguntaSelecionada].cast()['respostas']
-        : [];
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -42,11 +39,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
           centerTitle: true,
         ),
         body: temPerguntaSelecionada
-            ? Column(
-                children: [
-                  Questao(_perguntas[_perguntaSelecionada]['texto'].toString()),
-                  ...respostas.map((t) => Resposta(t, _responder)).toList(),
-                ],
+            ? Questionario(
+                perguntas: _perguntas,
+                perguntaSelecionada: _perguntaSelecionada,
+                quandoResponder: _responder,
               )
             : Resultado(),
       ),
